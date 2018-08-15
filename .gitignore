@@ -16,6 +16,7 @@ lib-cov
 
 # Coverage directory used by tools like istanbul
 coverage
+react_client/coverage/
 
 # nyc test coverage
 .nyc_output
@@ -32,8 +33,12 @@ bower_components
 # Compiled binary addons (https://nodejs.org/api/addons.html)
 build/Release
 
+# Compiled React build
+react_client/build/
+
 # Dependency directories
 node_modules/
+react_client/node_modules/
 jspm_packages/
 
 # Typescript v1 declaration files
@@ -59,3 +64,10 @@ typings/
 
 # next.js build output
 .next
+
+# Misc
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
