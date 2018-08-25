@@ -4,6 +4,16 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
+// variables
+if(process.env.NODE_ENV === 'production') {
+  urlBase = 'http://blackma.mba';
+  googleTagId = 'GTM-5FGP3QK';
+} else {
+  require('./.env');
+  urlBase = 'http://localhost:3000';
+  googleTagId = 'ABC-012345';
+}
+
 const mainRouter = require('./app_server/routes/main-router.js');
 // const usersRouter = require('./app_server/routes/users');
 
@@ -21,6 +31,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', mainRouter);
 // app.use('/users', usersRouter);
+
+// make NPM packages accessible to HTML
+app.use('/node_modules/jquery', express.static(__dirname + '/node_modules/jquery/dist'));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
